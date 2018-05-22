@@ -1,6 +1,7 @@
 package com.furafila.felipearaujo.projetofurafila.modelo;
 
 public class Pessoa {
+
     private String uid;
     private String nome;
     private String SobreNome;

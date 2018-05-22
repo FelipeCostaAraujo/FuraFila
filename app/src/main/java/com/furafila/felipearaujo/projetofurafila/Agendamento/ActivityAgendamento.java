@@ -16,12 +16,7 @@ public class ActivityAgendamento extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agendamento);
-        email = (EditText)findViewById(R.id.email);
-        password = (EditText)findViewById(R.id.password);
-        pass2 = (EditText)findViewById(R.id.pass2);
-        cpf = (EditText)findViewById(R.id.cpf);
 
-        listV_dados = (ListView) findViewById(R.id.listV_dados);
 
 
 

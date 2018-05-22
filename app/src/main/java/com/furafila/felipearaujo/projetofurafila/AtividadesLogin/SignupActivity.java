@@ -89,12 +89,14 @@ public class SignupActivity extends AppCompatActivity {
                 pessoa.setEmail(inputEmail.getText().toString());
                 pessoa.setPass(inputPassword.getText().toString());
                 pessoa.setCpf(inputcpf.getText().toString());
+
                 /* condicional para confirmacao de senha nao funcionando
                 if(inputPassword !=  inputpass2 ){
                     Toast.makeText(getApplicationContext(), "Senhas diferentes!", Toast.LENGTH_SHORT).show();
                     return;
                 }*/
                 //input de dados no banco do firebase
+
                 databaseReference.child("Pessoa").child(pessoa.getCpf()).setValue(pessoa);
 
 

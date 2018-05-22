@@ -21,7 +21,7 @@
         <activity android:name=".AtividadesLogin.MainActivity" />
         <activity android:name=".AtividadesLogin.SignupActivity" />
         <activity android:name=".AtividadesLogin.ResetPasswordActivity" />
-        <activity android:name=".Agendamento.ActivityAgendamento"></activity>
+        <activity android:name=".Agendamento.ActivityAgendamento" />
     </application>
 
 </manifest>
