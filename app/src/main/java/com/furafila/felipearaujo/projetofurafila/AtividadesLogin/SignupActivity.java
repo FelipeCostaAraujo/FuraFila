@@ -45,6 +45,7 @@ public class SignupActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Cadastro Fura Fila");
 
          //Get Firebase auth instance
+
         auth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
@@ -57,7 +58,6 @@ public class SignupActivity extends AppCompatActivity {
         btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
         inputpass2 = (EditText)findViewById(R.id.pass2);
         inputcpf = (EditText)findViewById(R.id.cpf);
-        listV_dados = (ListView)findViewById(R.id.listV_dados);
         inputNome = (EditText)findViewById(R.id.nome);
 
         btnResetPassword.setOnClickListener(new View.OnClickListener() {
