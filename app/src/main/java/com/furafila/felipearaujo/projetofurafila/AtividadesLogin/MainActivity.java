@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.furafila.felipearaujo.projetofurafila.Agendamento.ActivityAgendamento;
 import com.furafila.felipearaujo.projetofurafila.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnChangePassword, btnRemoveUser,
-            changePassword, remove, signOut;
+            changePassword, remove, signOut,btn_agendamento;
     private TextView email;
 
     private EditText oldEmail, password, newPassword;
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-
+        btn_agendamento = (Button)findViewById(R.id.btn_agendamento);
         btnChangePassword = (Button) findViewById(R.id.change_password_button);
 
         btnRemoveUser = (Button) findViewById(R.id.remove_user_button);
@@ -236,6 +238,13 @@ public class MainActivity extends AppCompatActivity {
         if (authListener != null) {
             auth.removeAuthStateListener(authListener);
         }
+    }
+
+    public void chamaAgenda(View v){
+        Intent intent = new Intent(MainActivity.this, ActivityAgendamento.class);
+        startActivity(intent);
+        finish();
+
     }
 }
 

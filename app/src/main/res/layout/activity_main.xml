@@ -135,4 +135,13 @@
         android:textSize="30sp"
         android:textStyle="bold|italic" />
 
+    <Button
+        android:id="@+id/btn_agendamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:onClick="chamaAgenda"
+        android:text="Button" />
+
 </RelativeLayout>

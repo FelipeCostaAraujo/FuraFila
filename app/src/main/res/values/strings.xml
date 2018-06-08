@@ -30,4 +30,19 @@
     <string name="lbl_forgot_password">Esqueceu a senha?</string>
     <string name="forgot_password_msg">Precisamos apenas do seu endereço de e-mail registrado para enviar a você as instruções de redefinição de senha.</string>
     <string name="email_id">Email ID</string>
+
+
+    <string-array name="horarios_atendimento">
+        <item>11:00</item>
+        <item>11:30</item>
+        <item>12:00</item>
+        <item>12:30</item>
+        <item>13:00</item>
+        <item>13:30</item>
+        <item>14:30</item>
+        <item>15:00</item>
+        <item>15:30</item>
+        <item>16:00</item>
+        <item>16:30</item>
+    </string-array>
 </resources>

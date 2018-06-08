@@ -83,7 +83,8 @@ public class SignupActivity extends AppCompatActivity {
 
 
 
-
+                String cpf =(inputcpf.getText().toString());
+                String nome =(inputNome.getText().toString());
                 Pessoa pessoa = new Pessoa();
                 pessoa.setNome(inputNome.getText().toString());
                 pessoa.setEmail(inputEmail.getText().toString());
@@ -97,7 +98,7 @@ public class SignupActivity extends AppCompatActivity {
                 }*/
                 //input de dados no banco do firebase
 
-                databaseReference.child("Pessoa").child(pessoa.getCpf()).setValue(pessoa);
+
 
 
                 if (TextUtils.isEmpty(email)) {
@@ -109,11 +110,21 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Insira sua Senha!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (TextUtils.isEmpty(nome)) {
+                    Toast.makeText(getApplicationContext(), "Insira seu Nome!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(cpf)) {
+                    Toast.makeText(getApplicationContext(), "Insira Seu CPF !", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if (password.length() < 6) {
                     Toast.makeText(getApplicationContext(), "Senha muito curta, insira no mínimo 6 caracteres!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                databaseReference.child("Pessoa").setValue(pessoa);
 
                 progressBar.setVisibility(View.VISIBLE);
                 //create user
