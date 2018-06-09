@@ -85,21 +85,18 @@ public class SignupActivity extends AppCompatActivity {
 
                 String cpf =(inputcpf.getText().toString());
                 String nome =(inputNome.getText().toString());
+                String pass2 =(inputpass2.getText().toString()).trim();
                 Pessoa pessoa = new Pessoa();
                 pessoa.setNome(inputNome.getText().toString());
                 pessoa.setEmail(inputEmail.getText().toString());
                 pessoa.setPass(inputPassword.getText().toString());
                 pessoa.setCpf(inputcpf.getText().toString());
+                pessoa.setPass2(inputpass2.getText().toString());
 
-                /* condicional para confirmacao de senha nao funcionando
-                if(inputPassword !=  inputpass2 ){
-                    Toast.makeText(getApplicationContext(), "Senhas diferentes!", Toast.LENGTH_SHORT).show();
+               if( pass2.length() != password.length()) {
+                    Toast.makeText(getApplicationContext(), "Senhas Diferentes !", Toast.LENGTH_SHORT).show();
                     return;
-                }*/
-                //input de dados no banco do firebase
-
-
-
+                }
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Insira seu Email!", Toast.LENGTH_SHORT).show();
@@ -123,6 +120,8 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Senha muito curta, insira no mínimo 6 caracteres!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                // mudar aonde o dado sera salvo
 
                 databaseReference.child("Pessoa").setValue(pessoa);
 

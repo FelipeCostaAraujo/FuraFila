@@ -3,6 +3,8 @@ package com.furafila.felipearaujo.projetofurafila.Agendamento;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.furafila.felipearaujo.projetofurafila.AtividadesLogin.LoginActivity;
 import com.furafila.felipearaujo.projetofurafila.AtividadesLogin.MainActivity;
@@ -65,6 +68,7 @@ public class ActivityAgendamento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agendamento);
 
+        this.setTitle("Agendamento");
 
         auth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -80,7 +84,8 @@ public class ActivityAgendamento extends AppCompatActivity {
         camanha = (RadioButton)findViewById(R.id.c_amanha);
 
 
-
+// busca dados do usuario,como email
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
 
@@ -89,6 +94,8 @@ public class ActivityAgendamento extends AppCompatActivity {
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.horarios_atendimento,android.R.layout.simple_spinner_item);
         horarios.setAdapter(adapter);
 
+
+        //busca te testes
        databaseReference.child("Pessoa").child("nome").addValueEventListener(new ValueEventListener() {
            @Override
            public void onDataChange(DataSnapshot dataSnapshot) {
@@ -175,10 +182,7 @@ public class ActivityAgendamento extends AppCompatActivity {
                 }
 
 
-                    if (data.length() < 6) {
-                        Toast.makeText(getApplicationContext(), "Digite uma Data!", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+
                     if (celular.length() < 8) {
                         Toast.makeText(getApplicationContext(), "Digite seu numero !!", Toast.LENGTH_SHORT).show();
                         return;

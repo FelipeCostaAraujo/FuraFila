@@ -22,6 +22,8 @@
         <activity android:name=".AtividadesLogin.SignupActivity" />
         <activity android:name=".AtividadesLogin.ResetPasswordActivity" />
         <activity android:name=".Agendamento.ActivityAgendamento" />
+        <activity android:name=".Agendamento.Consulta_Activity" />
+        <activity android:name=".Adicionais.DadosCadastrais_Activity"></activity>
     </application>
 
 </manifest>

@@ -7,6 +7,16 @@ public class Pessoa {
     private String SobreNome;
     private String email;
     private String pass;
+    private String pass2;
+
+    public String getPass2() {
+        return pass2;
+    }
+
+    public void setPass2(String pass2) {
+        this.pass2 = pass2;
+    }
+
     private String cpf;
 
     public String getPass() {
