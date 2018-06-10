@@ -99,6 +99,7 @@ public class SignupActivity extends AppCompatActivity {
                 pessoa.setPass2(inputpass2.getText().toString());
 
 
+
                if( pass2.length() != password.length()) {
                     Toast.makeText(getApplicationContext(), "Senhas Diferentes !", Toast.LENGTH_SHORT).show();
                     return;
@@ -154,7 +155,7 @@ public class SignupActivity extends AppCompatActivity {
                         .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(SignupActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignupActivity.this, "Cadastrado com sucesso !", Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
 
 
@@ -167,7 +168,6 @@ public class SignupActivity extends AppCompatActivity {
                                     final FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
                                     String id  = user1.getUid();
                                     databaseReference.child("Pessoa").child(id).setValue(pessoa);
-                                    Toast.makeText(SignupActivity.this, "key = " +user1, Toast.LENGTH_LONG).show();
 
                                     finish();
 

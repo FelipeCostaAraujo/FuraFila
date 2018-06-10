@@ -23,7 +23,7 @@ public class Consulta_Activity extends AppCompatActivity {
     DatabaseReference databaseReference;
     String recebe;
     Button Consultar;
-    EditText cpf,data,horario,email;
+    EditText cpf,data,horario,email,status;
 
     final FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
     String id  = user1.getUid();
@@ -44,6 +44,7 @@ public class Consulta_Activity extends AppCompatActivity {
         horario = (EditText)findViewById(R.id.txtHorarioC);
         cpf = (EditText)findViewById(R.id.txtCpfC);
         email =(EditText)findViewById(R.id.txt_emailC);
+        status = (EditText)findViewById(R.id.txt_statusC);
 
         Consultar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,9 +62,7 @@ public class Consulta_Activity extends AppCompatActivity {
                     }
                 });
 
-                SignupActivity signupActivity = new SignupActivity();
 
-                recebe = signupActivity.paramns;
 
                 databaseReference.child("Atendimento").child(id).child("cpf").addValueEventListener(new ValueEventListener() {
                     @Override
@@ -95,6 +94,19 @@ public class Consulta_Activity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         horario.setText(String.valueOf(dataSnapshot.getValue()));
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+                databaseReference.child("Atendimento").child(id).child("status").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        status.setText(String.valueOf(dataSnapshot.getValue()));
 
                     }
 

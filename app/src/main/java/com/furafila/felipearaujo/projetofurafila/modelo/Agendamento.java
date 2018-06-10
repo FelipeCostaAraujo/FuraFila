@@ -11,6 +11,16 @@ public class Agendamento {
    private String telefone;
    private String celular;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    private String status;
+
     public String getNome() {
         return nome;
     }

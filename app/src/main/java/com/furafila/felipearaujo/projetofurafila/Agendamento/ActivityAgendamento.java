@@ -100,12 +100,6 @@ public class ActivityAgendamento extends AppCompatActivity {
 
 
 
-
-
-
-        Toast.makeText(ActivityAgendamento.this, "key = " +user1+"Segunda "+pessoa.getUid(), Toast.LENGTH_LONG).show();
-
-
         //busca te testes
        databaseReference.child("Pessoa").child(id).child("nome").addValueEventListener(new ValueEventListener() {
            @Override
@@ -193,6 +187,7 @@ public class ActivityAgendamento extends AppCompatActivity {
                 agendamento.setDt_agendamento(data.getText().toString());
                 agendamento.setHr_agendamento(item);
                 agendamento.setCelular(celular.getText().toString());
+                agendamento.setStatus("Pendente");
 
                     if (celular.length() < 8) {
                         Toast.makeText(getApplicationContext(), "Digite seu numero !!", Toast.LENGTH_SHORT).show();
