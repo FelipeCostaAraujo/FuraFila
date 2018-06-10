@@ -162,12 +162,7 @@ public class ActivityAgendamento extends AppCompatActivity {
                  item = horarios.getSelectedItem().toString();
 
 
-                    agendamento.setNome(nome.getText().toString());
-                    agendamento.setCpf(cpf.getText().toString());
-                    agendamento.setEmail(email.getText().toString());
-                    agendamento.setDt_agendamento(data.getText().toString());
-                    agendamento.setHr_agendamento(item);
-                    agendamento.setCelular(celular.getText().toString());
+
 
                 if(choje.isChecked()) {
 
@@ -192,7 +187,12 @@ public class ActivityAgendamento extends AppCompatActivity {
                     data.setText(Data);
                 }
 
-
+                agendamento.setNome(nome.getText().toString());
+                agendamento.setCpf(cpf.getText().toString());
+                agendamento.setEmail(email.getText().toString());
+                agendamento.setDt_agendamento(data.getText().toString());
+                agendamento.setHr_agendamento(item);
+                agendamento.setCelular(celular.getText().toString());
 
                     if (celular.length() < 8) {
                         Toast.makeText(getApplicationContext(), "Digite seu numero !!", Toast.LENGTH_SHORT).show();
@@ -209,7 +209,7 @@ public class ActivityAgendamento extends AppCompatActivity {
 
 
                     } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), "Erro ao tentar agendar as :" + item, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Erro ao agendar as :" + item, Toast.LENGTH_LONG).show();
                     }
 
 
