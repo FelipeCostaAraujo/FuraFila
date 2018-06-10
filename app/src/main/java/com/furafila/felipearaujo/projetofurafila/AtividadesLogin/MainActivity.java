@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnChangePassword, btnRemoveUser,
             changePassword, remove, signOut,btn_agendamento,btn_ConsultaA;
     private TextView email;
+    String uid;
 
     private EditText oldEmail, password, newPassword;
     private ProgressBar progressBar;
@@ -44,15 +46,28 @@ public class MainActivity extends AppCompatActivity {
 
         this.setTitle("Bem Vindo ao FuraFila");
 
+
+
+
+
 //firebase auth instance
         auth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
 
+
+
+
+
+
         email = (TextView) findViewById(R.id.useremail);
 
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+
+
         setDataToView(user);
 
         authListener = new FirebaseAuth.AuthStateListener() {
@@ -172,19 +187,19 @@ public class MainActivity extends AppCompatActivity {
     public void chamaAgenda(View v){
         Intent intent = new Intent(MainActivity.this, ActivityAgendamento.class);
         startActivity(intent);
-        finish();
+
 
     }
 
     public void chamaConsulta(View v){
         Intent intent = new Intent(MainActivity.this, Consulta_Activity.class);
         startActivity(intent);
-        finish();
+
     }
     public void chamaDados(View v){
         Intent intent = new Intent(MainActivity.this, DadosCadastrais_Activity.class);
         startActivity(intent);
-        finish();
+
     }
 }
 

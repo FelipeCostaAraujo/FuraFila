@@ -62,6 +62,10 @@ public class ActivityAgendamento extends AppCompatActivity {
     LocalDateTime localDateTime;
 
 
+    final FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+    String id  = user1.getUid();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +99,15 @@ public class ActivityAgendamento extends AppCompatActivity {
         horarios.setAdapter(adapter);
 
 
+
+
+
+
+        Toast.makeText(ActivityAgendamento.this, "key = " +user1+"Segunda "+pessoa.getUid(), Toast.LENGTH_LONG).show();
+
+
         //busca te testes
-       databaseReference.child("Pessoa").child("nome").addValueEventListener(new ValueEventListener() {
+       databaseReference.child("Pessoa").child(id).child("nome").addValueEventListener(new ValueEventListener() {
            @Override
            public void onDataChange(DataSnapshot dataSnapshot) {
                nome.setText(String.valueOf(dataSnapshot.getValue()));
@@ -109,7 +120,7 @@ public class ActivityAgendamento extends AppCompatActivity {
            }
        });
 
-        databaseReference.child("Pessoa").child("email").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Pessoa").child(id).child("email").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 email.setText(String.valueOf(dataSnapshot.getValue()));
@@ -122,7 +133,7 @@ public class ActivityAgendamento extends AppCompatActivity {
             }
         });
 
-        databaseReference.child("Pessoa").child("cpf").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Pessoa").child(id).child("cpf").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 cpf.setText(String.valueOf(dataSnapshot.getValue()));
@@ -193,7 +204,7 @@ public class ActivityAgendamento extends AppCompatActivity {
 
                     try {
 
-                        databaseReference.child("Atendimento").child(agendamento.getHr_agendamento()).setValue(agendamento);
+                        databaseReference.child("Atendimento").child(id).setValue(agendamento);
                         Toast.makeText(getApplicationContext(), "Seu atendimento foi agendado para as:" + item, Toast.LENGTH_SHORT).show();
 
 

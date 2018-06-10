@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.furafila.felipearaujo.projetofurafila.AtividadesLogin.SignupActivity;
 import com.furafila.felipearaujo.projetofurafila.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,9 +21,12 @@ public class Consulta_Activity extends AppCompatActivity {
     private FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-
+    String recebe;
     Button Consultar;
     EditText cpf,data,horario,email;
+
+    final FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+    String id  = user1.getUid();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,7 @@ public class Consulta_Activity extends AppCompatActivity {
         Consultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseReference.child("Atendimento").child("13:30").child("email").addValueEventListener(new ValueEventListener() {
+                databaseReference.child("Atendimento").child(id).child("email").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         email.setText(String.valueOf(dataSnapshot.getValue()));
@@ -56,7 +61,11 @@ public class Consulta_Activity extends AppCompatActivity {
                     }
                 });
 
-                databaseReference.child("Atendimento").child("13:30").child("cpf").addValueEventListener(new ValueEventListener() {
+                SignupActivity signupActivity = new SignupActivity();
+
+                recebe = signupActivity.paramns;
+
+                databaseReference.child("Atendimento").child(id).child("cpf").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                        cpf.setText(String.valueOf(dataSnapshot.getValue()));
@@ -69,7 +78,7 @@ public class Consulta_Activity extends AppCompatActivity {
                     }
                 });
 
-                databaseReference.child("Atendimento").child("13:30").child("dt_agendamento").addValueEventListener(new ValueEventListener() {
+                databaseReference.child("Atendimento").child(id).child("dt_agendamento").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         data.setText(String.valueOf(dataSnapshot.getValue()));
@@ -82,7 +91,7 @@ public class Consulta_Activity extends AppCompatActivity {
                     }
                 });
 
-                databaseReference.child("Atendimento").child("13:30").child("hr_agendamento").addValueEventListener(new ValueEventListener() {
+                databaseReference.child("Atendimento").child(id).child("hr_agendamento").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         horario.setText(String.valueOf(dataSnapshot.getValue()));
