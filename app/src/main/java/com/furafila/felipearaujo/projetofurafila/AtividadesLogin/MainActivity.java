@@ -21,17 +21,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btnChangePassword, btnRemoveUser,
             changePassword, remove, signOut,btn_agendamento,btn_ConsultaA;
-    private TextView email;
-    String uid;
-
-    private EditText oldEmail, password, newPassword;
+    private TextView email,nome;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
     private FirebaseDatabase  firebaseDatabase;
@@ -55,16 +55,14 @@ public class MainActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
 
-
-
-
-
-
         email = (TextView) findViewById(R.id.useremail);
-
+        nome = (TextView)findViewById(R.id.username);
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+        String id  = user.getUid();
+        auth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
 
 
 
@@ -86,13 +84,7 @@ public class MainActivity extends AppCompatActivity {
         btn_agendamento = (Button)findViewById(R.id.btn_agendamento);
         btnChangePassword = (Button) findViewById(R.id.change_password_button);
         btn_ConsultaA =(Button)findViewById(R.id.btn_ConsultaA);
-
-
-
         signOut = (Button) findViewById(R.id.sign_out);
-
-
-
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         if (progressBar != null) {
@@ -102,6 +94,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
+        databaseReference.child("Pessoa").child(id).child("nome").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                nome.setText(String.valueOf(dataSnapshot.getValue()));
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
 
